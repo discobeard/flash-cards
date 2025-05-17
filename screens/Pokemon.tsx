@@ -27,21 +27,33 @@ const Pokemon: React.FC<Props> = ({route}) => {
     const [ leftCoordinate, setLeftCoordinate ] = useState(0);
     const [ rotate, setRotate ] = useState(0);
     const topC = useRef(440)
-
+    const [ isVisible, setIsVisible ] = useState(false)
+    const [ isCaptured, setIsCaptured ] = useState(false)
     const [ isLoading , setIsLoading ] = useState(false)
 
+    const displayCaptureAnimation = () => {
+        if (topC.current === 201 || topC.current === 200) {
+            setIsVisible(true)
+            setTimeout(() => {
+                setIsVisible(false)
+                // setTopCoordinate(440)
+                topC.current = 440
+                setIsCaptured(true)
+            }, 1000);
+        }
+    }
 
     const adjustTopCoordinate = async () => {
-        if (topC.current > 200) {
+        if (!isCaptured && topC.current >= 200) {
             setTimeout(async () => {
                 setTopCoordinate((prev) => prev - reducer); // Decrease the top position
                 topC.current = topC.current - reducer
                 setIsLoading(false)
                 await adjustTopCoordinate(); // Call the function recursively
+                console.log(topC.current)
             }, 10); // Delay for smooth animation
-        } else {
-            return
-        }
+        } 
+        displayCaptureAnimation();
         setIsLoading(false)
     };
 
@@ -55,7 +67,7 @@ const Pokemon: React.FC<Props> = ({route}) => {
     }, [name]);
     return (
         <View>
-            {pokemonDetails && 
+            {pokemonDetails && !isCaptured &&
             <Card style={styles.card}>
                 <Image
                     source={{ uri: pokemonDetails.artwork }}
@@ -65,16 +77,10 @@ const Pokemon: React.FC<Props> = ({route}) => {
                 />
                 </Card>}
             <Text style={styles.pokemonText}>{name}</Text>
-            <Button
-            style={styles.button}
-                mode="contained"
-                onPress={() => console.log("Button Pressed")}
-                >
-                Hear them talk
-                </Button>
                 <Image
                     source={{ uri: isLegendary ? masterball : pokeball }}
-                    style={{            
+                    style={{      
+                        zIndex: 2,      
                         width: 100,
                         height: 100,
                         marginLeft: 150,
@@ -83,11 +89,28 @@ const Pokemon: React.FC<Props> = ({route}) => {
                         position: 'absolute',
                         top: topCoordinate,
                         left: leftCoordinate,}}
+                        
                     contentFit="fill"
                     transition={1000}
                     onTouchStart={async () => {
                         await adjustTopCoordinate()
                     }}
+                    />
+                    <Image
+                    source={require('./pokemon-capture.png')}
+                    contentFit="fill"
+                    transition={1000}
+                    style={{            
+                        width: 400,
+                        height: 400,
+                        marginLeft: 0,
+                        marginTop: 0,
+                        top: -400,
+                        left: leftCoordinate,
+                        zIndex:1,
+                        opacity: isVisible ? 1 :0
+                        }}
+                        
                     />
         </View>
     )
