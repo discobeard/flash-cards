@@ -322,4 +322,7 @@ export const pokedex: PokedexBasic[] = [
     export const overrides: PokedexOverride[] = [
     {name: "Mimikyu", index: 778},
     {name: "Mr. Mime", index: 122},
+    {name: "Farfetch’d", index: 83},
+    {name: "Nidoran♀", index: 29},
+    {name: "Nidoran♂", index: 32},
 ];

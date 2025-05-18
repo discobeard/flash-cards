@@ -77,7 +77,7 @@ const Pokemon: React.FC<Props> = ({route}) => {
                 />
                 </Card>}
             <Text style={styles.pokemonText}>{name}</Text>
-                <Image
+             {!isCaptured && <Image
                     source={{ uri: isLegendary ? masterball : pokeball }}
                     style={{      
                         zIndex: 2,      
@@ -89,13 +89,14 @@ const Pokemon: React.FC<Props> = ({route}) => {
                         position: 'absolute',
                         top: topCoordinate,
                         left: leftCoordinate,}}
+                    
                         
                     contentFit="fill"
                     transition={1000}
                     onTouchStart={async () => {
                         await adjustTopCoordinate()
                     }}
-                    />
+                    />}
                     <Image
                     source={require('./pokemon-capture.png')}
                     contentFit="fill"
