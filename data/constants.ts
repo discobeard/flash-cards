@@ -318,7 +318,7 @@ export const pokedex: PokedexBasic[] = [
     {'index': 778, 'name': 'Mimikyu', 'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/778.png' },
   ];
 
-
+// TODO: add cleaning to names to remove special characters or use indexes to search for all pokemon.
     export const overrides: PokedexOverride[] = [
     {name: "Mimikyu", index: 778},
     {name: "Mr. Mime", index: 122},
