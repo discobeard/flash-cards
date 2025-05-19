@@ -7,6 +7,7 @@ import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../App';
 import { Button, Card } from 'react-native-paper';
 import { overrides, pokeball, legendaryPokemon, masterball } from '../data/constants';
+import { Audio } from 'expo-av';
 
 interface PokemonProps {
     name: string
@@ -19,6 +20,9 @@ type Props = {
   };
 
 const Pokemon: React.FC<Props> = ({route}) => {
+    const playbackObject = new Audio.Sound();
+
+    const [ pokemonCry, setPokemonCry ] = useState('');
     const reducer = 5;
     const { name } = route.params; // Extract the "name" para
     const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails>();
@@ -35,7 +39,7 @@ const Pokemon: React.FC<Props> = ({route}) => {
         if (topC.current === 201 || topC.current === 200) {
             setIsVisible(true)
             setTimeout(() => {
-                setIsVisible(false)
+             setIsVisible(false)
                 // setTopCoordinate(440)
                 topC.current = 440
                 setIsCaptured(true)
@@ -62,9 +66,21 @@ const Pokemon: React.FC<Props> = ({route}) => {
             const index = overrides.find((pokemon) => pokemon.name === name)?.index.toString();
             const details = await PokemonService.getPokemonDetail(index ? index : name);
             setPokemonDetails(details);
+            setPokemonCry(details.cry);
+
         }
         fetchPokemonDetails();
     }, [name]);
+
+    useEffect(() => {
+        const playPokemonCry = async () => {
+            if (pokemonCry) {
+                await playbackObject.loadAsync({ uri: pokemonCry });
+                await playbackObject.playAsync();
+            }
+        }
+        playPokemonCry();
+    }, [pokemonCry]);
     return (
         <View>
             {pokemonDetails && !isCaptured &&
