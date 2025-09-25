@@ -1081,6 +1081,12 @@ export const pokedexEnhanced: PokedexEnhanced[] = [
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/172.png',
   },
   {
+    index: 200,
+    name: 'Misdreavus',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/200.png',
+  },
+  {
     index: 311,
     name: 'Plusle',
     sprite:
@@ -1117,10 +1123,40 @@ export const pokedexEnhanced: PokedexEnhanced[] = [
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/471.png',
   },
   {
+    index: 568,
+    name: 'Trubbish',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/568.png',
+  },
+  {
+    index: 569,
+    name: 'Garbodor',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/569.png',
+  },
+  {
     index: 778,
     name: 'Mimikyu',
     sprite:
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/778.png',
+  },
+  {
+    index: 856,
+    name: 'Hatenna',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/856.png',
+  },
+  {
+    index: 857,
+    name: 'Hattrem',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/857.png',
+  },
+  {
+    index: 858,
+    name: 'Hatterene',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/858.png',
   },
   {
     index: 906,
@@ -1139,6 +1175,18 @@ export const pokedexEnhanced: PokedexEnhanced[] = [
     name: 'Quaxly',
     sprite:
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/912.png',
+  },
+  {
+    index: 915,
+    name: 'Lechonk',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/915.png',
+  },
+  {
+    index: 916,
+    name: 'Oinkologne',
+    sprite:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/916.png',
   },
   {
     index: 921,
